@@ -7,7 +7,7 @@
   when: ansible_os_family == "RedHat"
 
 - name: Checkout Inbox
-  git: src={{ inbox.repo }} dest={{ inbox.paths.install }}
+  git: repo={{ inbox.repo }} dest={{ inbox.paths.install }} version={{ inbox.version }}
 
 - name: Ensure Inbox user exists
   user: name={{ inbox.user }} home={{ inbox.paths.install }} comment="Inbox user"
