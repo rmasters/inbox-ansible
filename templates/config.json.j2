@@ -1,0 +1,28 @@
+{
+"API_SERVER_LOC": "tcp://{{ inbox.listen.api }}",
+"CRISPIN_SERVER_LOC": "tcp://{{ inbox.listen.crispin }}",
+"WEBHOOK_SERVER_LOC": "tcp://{{ inbox.listen.webhook }}",
+
+"MYSQL_DATABASE": "{{ inbox.database.name }}",
+"MYSQL_USER": "{{ inbox.database.user }}",
+"MYSQL_PASSWORD": "{{ inbox.database.password }}",
+"MYSQL_HOSTNAME": "{{ inbox.database.host }}",
+"MYSQL_PORT": 3306,
+
+"DB_POOL_SIZE": 25,
+
+"CACHE_BASEDIR" : "{{ inbox.paths.lib }}/cache",
+"LOGDIR": "{{ inbox.paths.log }}",
+"LOGLEVEL": {{ inbox.loglevel }},
+
+"GOOGLE_OAUTH_CLIENT_ID": "{{ inbox.google_oauth.client_id }}",
+"GOOGLE_OAUTH_CLIENT_SECRET": "{{ inbox.google_oauth.client_secret }}",
+"GOOGLE_OAUTH_REDIRECT_URI": "{{ inbox.google_oauth.redirect_uri }}",
+
+"STORE_MESSAGES_ON_S3": false,
+"MSG_PARTS_DIRECTORY": "{{ inbox.paths.lib }}/parts",
+
+"VAULT_TYPE": "local",
+
+"EMAIL_EXCEPTIONS": false
+}

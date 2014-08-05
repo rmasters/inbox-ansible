@@ -1,0 +1,20 @@
+---
+
+- name: Install required packages
+  apt: pkg={{item}} state=present
+  with_items:
+    - git
+    - supervisor
+    - libmysqlclient-dev
+    - python
+    - python-dev
+    - python-pip
+    - python-setuptools
+    - build-essential
+    - gcc
+    - libzmq-dev
+    - libxml2-dev
+    - libxslt-dev
+    - lib32z1-dev
+    - libffi-dev
+    - python-lxml

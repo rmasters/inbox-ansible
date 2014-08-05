@@ -1,0 +1,26 @@
+---
+
+inbox:
+  repo: 'git://github.com/inboxapp/inbox.git'
+  version: master
+  paths:
+    install: /srv/inbox
+    config: /etc/inboxapp
+    log: /var/log/inboxapp
+    lib: /var/lib/inboxapp
+  user: inbox
+  database:
+    host: localhost
+    name: inbox
+    user: root
+    password: ~
+  listen:
+    api: '0.0.0.0:9999'
+    crispin: '0.0.0.0:9997'
+    webhook: '0.0.0.0:9994'
+  google_oauth:
+    # Note: these are the Inbox development credentials
+    client_id: '986659776516-fg79mqbkbktf5ku10c215vdij918ra0a.apps.googleusercontent.com'
+    client_secret: 'zgY9wgwML0kmQ6mmYHYJE05d'
+    redirect_uri: 'urn:ietf:wg:oauth:2.0:oob'
+  loglevel: 10

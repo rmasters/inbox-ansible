@@ -1,0 +1,4 @@
+---
+
+- name: restart inbox
+  supervisorctl: name='inbox:' state=restarted

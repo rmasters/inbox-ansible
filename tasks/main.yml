@@ -1,0 +1,36 @@
+---
+
+- include: debian.yml
+  when: ansible_os_family == "Debian"
+
+- include: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: Checkout Inbox
+  git: src={{ inbox.repo }} dest={{ inbox.paths.install }}
+
+- name: Ensure Inbox user exists
+  user: name={{ inbox.user }} home={{ inbox.paths.install }} comment="Inbox user"
+
+- name: Install dependencies
+  pip: requirements={{ inbox.paths.install }}/requirements.txt
+
+- name: Create Inbox config directory
+  file: path={{ inbox.paths.config }} state=directory owner=root
+
+- name: Copy default configuration
+  template: src=config.json.j2 dest={{ inbox.paths.config }}/config.json
+
+- name: Create Inbox logs directory
+  file: path={{ inbox.paths.log }} state=directory owner={{ inbox.user }}
+
+- name: Create Inbox libs directory
+  file: path={{ inbox.paths.lib }} state=directory owner={{ inbox.user }}
+
+- name: Create Inbox databases
+  command: python {{ inbox.paths.install }}/bin/create-db
+
+- name: Install Supervisor tasks
+  template: src=inbox.supervisor.j2 dest=/etc/supervisor.d/inbox.conf
+  notify:
+    - restart inbox

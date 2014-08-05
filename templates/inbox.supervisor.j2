@@ -1,0 +1,13 @@
+; The inbox-start command runs the mail-sync and webhook services
+[program:inbox:server]
+command=python {{ inbox.paths.install }}/bin/inbox-start -c {{ inbox.paths.config }}/config.json
+user={{ inbox.user }}
+stdout_logfile={{ inbox.paths.log }}/inbox-server.stdout.log
+stdout_logfile={{ inbox.paths.log }}/inbox-server.stdout.log
+
+; The inbox-api command runs the API server
+[program:inbox:api]
+command=python {{ inbox.paths.install }}/bin/inbox-api -c {{ inbox.paths.config }}/config.json
+user={{ inbox.user }}
+stdout_logfile={{ inbox.paths.log }}/inbox-api.stdout.log
+stdout_logfile={{ inbox.paths.log }}/inbox-api.stdout.log
