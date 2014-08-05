@@ -31,6 +31,6 @@
   command: python {{ inbox.paths.install }}/bin/create-db
 
 - name: Install Supervisor tasks
-  template: src=inbox.supervisor.j2 dest=/etc/supervisor.d/inbox.conf
+  template: src=inbox.supervisor.j2 dest={{ supervisor_conf_dir }}/inbox.conf
   notify:
     - restart inbox
